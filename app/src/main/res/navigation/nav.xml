@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/inicioSesion">
+
+    <fragment
+        android:id="@+id/inicioSesion"
+        android:name="com.mas_aplicaciones.appclass.InicioSesion"
+        android:label="fragment_inicio_sesion"
+        tools:layout="@layout/fragment_inicio_sesion" >
+        <action
+            android:id="@+id/action_inicioSesion_to_registroInstructor"
+            app:destination="@id/registroInstructor" />
+        <action
+            android:id="@+id/action_inicioSesion_to_listadoMaterias"
+            app:destination="@id/listadoMaterias" />
+    </fragment>
+    <fragment
+        android:id="@+id/registroInstructor"
+        android:name="com.mas_aplicaciones.appclass.RegistroInstructor"
+        android:label="fragment_registro_instructor"
+        tools:layout="@layout/fragment_registro_instructor" />
+    <fragment
+        android:id="@+id/listadoMaterias"
+        android:name="com.mas_aplicaciones.appclass.ListadoMaterias"
+        android:label="fragment_listado_materias"
+        tools:layout="@layout/fragment_listado_materias" >
+        <action
+            android:id="@+id/action_listadoMaterias_to_materia"
+            app:destination="@id/materia" />
+    </fragment>
+    <fragment
+        android:id="@+id/materia"
+        android:name="com.mas_aplicaciones.appclass.Materia"
+        android:label="fragment_materia"
+        tools:layout="@layout/fragment_materia" >
+        <action
+            android:id="@+id/action_materia_to_materiaAlumnos"
+            app:destination="@id/materiaAlumnos" />
+        <action
+            android:id="@+id/action_materia_to_materiaListaAsistencia"
+            app:destination="@id/materiaListaAsistencia" />
+    </fragment>
+    <fragment
+        android:id="@+id/registroAlumno"
+        android:name="com.mas_aplicaciones.appclass.RegistroAlumno"
+        android:label="fragment_registro_alumno"
+        tools:layout="@layout/fragment_registro_alumno" />
+    <fragment
+        android:id="@+id/materiaAlumnos"
+        android:name="com.mas_aplicaciones.appclass.MateriaAlumnos"
+        android:label="fragment_materia_alumnos"
+        tools:layout="@layout/fragment_materia_alumnos" >
+        <action
+            android:id="@+id/action_materiaAlumnos_to_registroAlumno"
+            app:destination="@id/registroAlumno" />
+    </fragment>
+    <fragment
+        android:id="@+id/materiaListaAsistencia"
+        android:name="com.mas_aplicaciones.appclass.MateriaListaAsistencia"
+        android:label="fragment_materia_lista_asistencia"
+        tools:layout="@layout/fragment_materia_lista_asistencia" >
+        <action
+            android:id="@+id/action_materiaListaAsistencia_to_asistencia"
+            app:destination="@id/asistencia" />
+        <action
+            android:id="@+id/action_materiaListaAsistencia_to_reporte"
+            app:destination="@id/reporte" />
+    </fragment>
+    <fragment
+        android:id="@+id/asistencia"
+        android:name="com.mas_aplicaciones.appclass.Asistencia"
+        android:label="fragment_asistencia"
+        tools:layout="@layout/fragment_asistencia" />
+    <fragment
+        android:id="@+id/reporte"
+        android:name="com.mas_aplicaciones.appclass.Reporte"
+        android:label="fragment_reporte"
+        tools:layout="@layout/fragment_reporte" />
+</navigation>
