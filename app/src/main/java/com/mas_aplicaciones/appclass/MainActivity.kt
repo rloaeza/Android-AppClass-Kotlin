@@ -2,6 +2,9 @@ package com.mas_aplicaciones.appclass
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.WindowManager
+
 
 class MainActivity : AppCompatActivity() {
 

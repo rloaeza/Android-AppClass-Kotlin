@@ -7,4 +7,12 @@
     <string name="hint_login_password">Clave</string>
     <string name="login">Iniciar</string>
     <string name="register">Registrar</string>
+    <string name="register_title">Registro de usuario</string>
+    <string name="register_complete_name">Nombre completo</string>
+    <string name="register_email">Correo electrónico</string>
+    <string name="register_tel" >Teléfono</string>
+    <string name="usuario">Usuario</string>
+    <string name="clave">Clave</string>
+    <string name="registrar">Registrar</string>
+    <string name="cancelar">Cancelar</string>
 </resources>
