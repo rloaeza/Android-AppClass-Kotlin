@@ -36,7 +36,7 @@
             app:layout_constraintGuide_percent=".5" />
 
         <EditText
-            android:id="@+id/editTextUser"
+            android:id="@+id/etUsuario"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -51,7 +51,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
         <EditText
-            android:id="@+id/editTextPassword"
+            android:id="@+id/etClave"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -64,10 +64,10 @@
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextUser" />
+            app:layout_constraintTop_toBottomOf="@+id/etUsuario" />
 
         <Button
-            android:id="@+id/buttonLogIn"
+            android:id="@+id/bEntrar"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -77,10 +77,10 @@
             android:text="@string/login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/etClave" />
 
         <Button
-            android:id="@+id/buttonRegister"
+            android:id="@+id/bRegistrar"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
             android:text="@string/register"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/etClave" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"
