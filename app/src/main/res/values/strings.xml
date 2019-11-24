@@ -16,4 +16,6 @@
     <string name="registrar">Registrar</string>
     <string name="cancelar">Cancelar</string>
     <string name="materias">Materias</string>
+    <string name="agregar_materia">Agregar Materia</string>
+    <string name="salir">Salir</string>
 </resources>
