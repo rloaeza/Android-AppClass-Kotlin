@@ -39,6 +39,9 @@
             app:destination="@id/materia" />
         <argument android:name="usuario"
             app:argType="com.mas_aplicaciones.appclass.modelo.Usuario" />
+        <action
+            android:id="@+id/action_listadoMaterias_to_registroMateria"
+            app:destination="@id/registroMateria" />
     </fragment>
     <fragment
         android:id="@+id/materia"
@@ -88,4 +91,13 @@
         android:name="com.mas_aplicaciones.appclass.Reporte"
         android:label="fragment_reporte"
         tools:layout="@layout/fragment_reporte" />
+    <fragment
+        android:id="@+id/registroMateria"
+        android:name="com.mas_aplicaciones.appclass.RegistroMateria"
+        android:label="fragment_registro_materia"
+        tools:layout="@layout/fragment_registro_materia" >
+        <argument
+            android:name="usuario"
+            app:argType="com.mas_aplicaciones.appclass.modelo.Usuario" />
+    </fragment>
 </navigation>
