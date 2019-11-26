@@ -21,7 +21,14 @@
         android:id="@+id/registroInstructor"
         android:name="com.mas_aplicaciones.appclass.RegistroInstructor"
         android:label="fragment_registro_instructor"
-        tools:layout="@layout/fragment_registro_instructor" />
+        tools:layout="@layout/fragment_registro_instructor" >
+        <argument
+            android:name="usuario"
+            app:argType="string" />
+        <argument
+            android:name="clave"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/listadoMaterias"
         android:name="com.mas_aplicaciones.appclass.ListadoMaterias"
@@ -30,6 +37,8 @@
         <action
             android:id="@+id/action_listadoMaterias_to_materia"
             app:destination="@id/materia" />
+        <argument android:name="usuario"
+            app:argType="com.mas_aplicaciones.appclass.modelo.Usuario" />
     </fragment>
     <fragment
         android:id="@+id/materia"

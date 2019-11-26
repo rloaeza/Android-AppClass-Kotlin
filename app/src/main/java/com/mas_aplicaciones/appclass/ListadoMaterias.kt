@@ -7,11 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import com.google.android.material.snackbar.Snackbar
+import com.mas_aplicaciones.appclass.modelo.Usuario
 import kotlinx.android.synthetic.main.fragment_listado_materias.*
 
-/**
- * A simple [Fragment] subclass.
- */
+//
+//  ListadoMaterias.kt
+//  AppClass
+//
+//  Created by Roberto Loaeza Valerio on 2019-11-26.
+//  Copyright © 2019 Roberto Loaeza Valerio. All rights reserved.
+//
 class ListadoMaterias : Fragment() {
 
     override fun onCreateView(
@@ -24,8 +30,14 @@ class ListadoMaterias : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        bSalir.setOnClickListener({
+
+
+        val usuario: Usuario = arguments?.get("usuario") as Usuario
+        Snackbar.make(view, String.format(getString(R.string.msg_bienvenido), usuario.nombreCompleto), Snackbar.LENGTH_LONG).show()
+
+
+        bSalir.setOnClickListener {
             Navigation.findNavController(it).popBackStack()
-        })
+        }
     }
 }

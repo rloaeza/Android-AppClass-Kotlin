@@ -7,16 +7,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Toast
-import androidx.core.text.set
+import androidx.core.os.bundleOf
 import androidx.navigation.Navigation
+import com.google.android.material.snackbar.Snackbar
 import com.mas_aplicaciones.appclass.modelo.Usuario
 import kotlinx.android.synthetic.main.fragment_inicio_sesion.*
 
-/**
- * A simple [Fragment] subclass.
- */
+//
+//  InicioSesion.kt
+//  AppClass
+//
+//  Created by Roberto Loaeza Valerio on 2019-11-26.
+//  Copyright © 2019 Roberto Loaeza Valerio. All rights reserved.
+//
 class InicioSesion : Fragment() {
 
     override fun onCreateView(
@@ -31,23 +34,26 @@ class InicioSesion : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         bRegistrar.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_inicioSesion_to_registroInstructor)
+
+            var bundle = bundleOf("usuario" to etUsuario.text.toString(), "clave" to etClave.text.toString() )
+            Navigation.findNavController(it).navigate(R.id.action_inicioSesion_to_registroInstructor, bundle)
             etUsuario.text.clear()
             etClave.text.clear()
         }
 
-        bEntrar.setOnClickListener( {
-            if( existeUsuario() != null) {
-                Navigation.findNavController(it).navigate(R.id.action_inicioSesion_to_listadoMaterias)
+        bEntrar.setOnClickListener {
+            val usuario: Usuario? = existeUsuario()
+            if( usuario != null) {
+                var bundle = bundleOf("usuario" to usuario)
+                Navigation.findNavController(it).navigate(R.id.action_inicioSesion_to_listadoMaterias, bundle)
+
                 etUsuario.text.clear()
                 etClave.text.clear()
 
+            } else {
+                Snackbar.make(it, R.string.error_usuario_y_o_clave, Snackbar.LENGTH_LONG).show()
             }
-            else {
-                Toast.makeText(context, "Usuario y/o Clave erróneos", Toast.LENGTH_SHORT).show()
-
-            }
-        })
+        }
     }
 
     private fun existeUsuario(): Usuario? {

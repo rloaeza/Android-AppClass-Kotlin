@@ -18,4 +18,9 @@
     <string name="materias">Materias</string>
     <string name="agregar_materia">Agregar Materia</string>
     <string name="salir">Salir</string>
+    <string name="error_usuario_y_o_clave">Usuario y/o clave erróneos</string>
+    <string name="error_usuario_existe">El usuario ya existe en la bd</string>
+    <string name="error_claves_no_coinciden">Las claves no coinciden</string>
+    <string name="error_faltan_datos">Faltan datos</string>
+    <string name="msg_bienvenido">Bienvenido %s</string>
 </resources>
