@@ -12,10 +12,18 @@
         tools:layout="@layout/fragment_inicio_sesion" >
         <action
             android:id="@+id/action_inicioSesion_to_registroInstructor"
-            app:destination="@id/registroInstructor" />
+            app:destination="@id/registroInstructor"
+            app:enterAnim="@anim/enter_from_left"
+            app:exitAnim="@anim/exit_to_right"
+            app:popEnterAnim="@anim/enter_from_right"
+            app:popExitAnim="@anim/exit_to_left" />
         <action
             android:id="@+id/action_inicioSesion_to_listadoMaterias"
-            app:destination="@id/listadoMaterias" />
+            app:destination="@id/listadoMaterias"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
     </fragment>
     <fragment
         android:id="@+id/registroInstructor"
@@ -41,7 +49,11 @@
             app:argType="com.mas_aplicaciones.appclass.modelo.Usuario" />
         <action
             android:id="@+id/action_listadoMaterias_to_registroMateria"
-            app:destination="@id/registroMateria" />
+            app:destination="@id/registroMateria"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
     </fragment>
     <fragment
         android:id="@+id/materia"

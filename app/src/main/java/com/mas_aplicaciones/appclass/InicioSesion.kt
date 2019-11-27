@@ -46,7 +46,7 @@ class InicioSesion : Fragment() {
             if( usuario != null) {
                 var bundle = bundleOf("usuario" to usuario)
                 Navigation.findNavController(it).navigate(R.id.action_inicioSesion_to_listadoMaterias, bundle)
-
+                Snackbar.make(view, String.format(getString(R.string.msg_bienvenido), usuario.nombreCompleto), Snackbar.LENGTH_LONG).show()
                 etUsuario.text.clear()
                 etClave.text.clear()
 

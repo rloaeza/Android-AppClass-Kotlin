@@ -46,6 +46,7 @@
             android:gravity="center"
             android:hint="@string/hint_login_user"
             android:inputType="textPersonName"
+            android:text="roberto"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline3" />
@@ -62,6 +63,7 @@
             android:gravity="center"
             android:hint="@string/hint_login_password"
             android:inputType="textPassword"
+            android:text="roberto"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etUsuario" />

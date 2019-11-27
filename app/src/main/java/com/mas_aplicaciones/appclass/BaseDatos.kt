@@ -16,7 +16,7 @@ import com.mas_aplicaciones.appclass.modelo.Usuario
 class BaseDatos(context: Context) : SQLiteOpenHelper(context, dbName, null, dbVersion) {
 
     companion object {
-        const val dbVersion = 1
+        const val dbVersion = 2
         const val dbName = "appclass.db"
 
         var usuarioAppClass: Usuario? = null
@@ -30,6 +30,15 @@ class BaseDatos(context: Context) : SQLiteOpenHelper(context, dbName, null, dbVe
                 "clave TEXT" +
                 ")"
 
+        val dbMaterias: String = "CREATE TABLE IF NOT EXISTS materias (" +
+                "id INTEGER PRIMARY KEY autoincrement," +
+                "nombre TEXT," +
+                "descripcion TEXT," +
+                "idUsuario INTEGER," +
+                "logo BLOB" +
+                ")"
+
+
     }
 
 
@@ -37,10 +46,13 @@ class BaseDatos(context: Context) : SQLiteOpenHelper(context, dbName, null, dbVe
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(dbUsuarios)
+        db.execSQL(dbMaterias)
     }
 
-    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        db.execSQL("DROP TABLE IF EXISTS usuarios")
+        db.execSQL("DROP TABLE IF EXISTS materias")
+        onCreate(db)
     }
 
 

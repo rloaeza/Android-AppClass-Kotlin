@@ -23,4 +23,11 @@
     <string name="error_claves_no_coinciden">Las claves no coinciden</string>
     <string name="error_faltan_datos">Faltan datos</string>
     <string name="msg_bienvenido">Bienvenido %s</string>
+    <string name="materia">Materia</string>
+    <string name="imagen_seleccionar">Seleccionar imagen</string>
+    <string name="materia_nombre">Nombre de la materia</string>
+    <string name="materia_descripcion">Descripción de la materia</string>
+    <string name="imagen_camara">Desde cámara</string>
+    <string name="imagen_galeria">Desde galería</string>
+    <string name="registro_exitoso">Registro exitoso</string>
 </resources>
