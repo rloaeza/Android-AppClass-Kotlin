@@ -2,6 +2,7 @@ package com.mas_aplicaciones.appclass
 
 
 import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -40,9 +41,14 @@ class ListadoMaterias : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         usuario = arguments?.get("usuario") as Usuario
-
+/*
         val adapter = ArrayAdapter(context!!,  android.R.layout.simple_expandable_list_item_1, listaMaterias)
         lvMaterias.adapter = adapter
+
+        */
+        val adaptaer = ListViewItemMateria(context!!, listaMaterias)
+        lvMaterias.adapter = adaptaer
+
         cargarMaterias()
 
 
@@ -71,7 +77,7 @@ class ListadoMaterias : Fragment() {
                     fila.getInt(fila.getColumnIndex("id")),
                     fila.getString(fila.getColumnIndex("nombre")),
                     fila.getString(fila.getColumnIndex("descripcion")),
-                    fila.getBlob(fila.getColumnIndex("logo")),
+                    Uri.parse(fila.getString(fila.getColumnIndex("logo"))),
                     fila.getInt(fila.getColumnIndex("idUsuario"))
                     )
                 listaMaterias.add(materia)
@@ -79,6 +85,8 @@ class ListadoMaterias : Fragment() {
             } while( fila.moveToNext())
 
         }
+        fila.close()
+        baseDatos.close()
     }
 
 }

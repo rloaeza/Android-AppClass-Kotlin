@@ -1,5 +1,6 @@
 package com.mas_aplicaciones.appclass.modelo
 
+import android.net.Uri
 import java.io.Serializable
 
 //
@@ -13,7 +14,7 @@ import java.io.Serializable
 open class Materia (open val id: Int,
                     open val nombre: String,
                     open val descripcion: String,
-                    open val logo: ByteArray,
+                    open val logo: Uri,
                     open val idUsuario: Int)  : Serializable {
 
 

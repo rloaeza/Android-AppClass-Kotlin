@@ -3,15 +3,21 @@ package com.mas_aplicaciones.appclass
 
 import android.app.AlertDialog
 import android.content.ContentValues
+import android.content.Context
+import android.content.ContextWrapper
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.scale
 import androidx.navigation.Navigation
 import com.google.android.material.snackbar.Snackbar
 import com.mas_aplicaciones.appclass.modelo.Usuario
@@ -19,7 +25,8 @@ import kotlinx.android.synthetic.main.fragment_registro_instructor.*
 import kotlinx.android.synthetic.main.fragment_registro_materia.*
 import kotlinx.android.synthetic.main.fragment_registro_materia.bCancelar
 import kotlinx.android.synthetic.main.fragment_registro_materia.bRegistrar
-import java.io.ByteArrayOutputStream
+import java.io.*
+import java.util.*
 
 //
 //  RegistroMateria.kt
@@ -76,10 +83,7 @@ class RegistroMateria : Fragment() {
                 Snackbar.make(it, R.string.error_faltan_datos, Snackbar.LENGTH_LONG).show()
             }
             else {
-                val logo: Bitmap = (ivMateriaLogo.drawable as BitmapDrawable).bitmap
-                val stream: ByteArrayOutputStream = ByteArrayOutputStream()
-                logo.compress(Bitmap.CompressFormat.PNG, 0, stream)
-                insertarMateria(stream, usuario.id)
+                insertarMateria(usuario.id)
                 Snackbar.make(it, R.string.registro_exitoso, Snackbar.LENGTH_LONG).show()
                 Navigation.findNavController(it).popBackStack()
             }
@@ -92,6 +96,7 @@ class RegistroMateria : Fragment() {
             GALERIA -> {
                 if( data != null) {
                     val imagenData = data!!.data
+
                     ivMateriaLogo.setImageURI(imagenData)
                 }
             }
@@ -103,13 +108,70 @@ class RegistroMateria : Fragment() {
         }
     }
 
+    private fun saveImageToInternalStorage(drawableId:Int):Uri{
+        // Get the image from drawable resource as drawable object
+        //val drawable = ContextCompat.getDrawable(context!!,drawableId)
 
-    private fun insertarMateria(logo: ByteArrayOutputStream, idUsuario: Int) {
+        // Get the bitmap from drawable object
+        //val bitmap = (drawable as BitmapDrawable).bitmap
+
+
+        var bitmap: Bitmap = ((ivMateriaLogo.drawable as BitmapDrawable).bitmap)
+        val ancho: Int = bitmap.width
+        val alto: Int = bitmap.height
+        val nuevoAncho = 400
+        val factor: Double = (nuevoAncho*100.0)/ancho
+
+        Log.e("Imagen", "ancho=${ancho}, alto=${alto}, factor=${factor}")
+
+        bitmap = bitmap.scale(nuevoAncho, (factor*alto/100).toInt())
+        //val stream: ByteArrayOutputStream = ByteArrayOutputStream()
+        //bitmap.compress(Bitmap.CompressFormat.PNG, 0, stream)
+
+
+        // Get the context wrapper instance
+        val wrapper = ContextWrapper(context!!)
+
+        // Initializing a new file
+        // The bellow line return a directory in internal storage
+        var file = wrapper.getDir("images", Context.MODE_PRIVATE)
+
+
+        // Create a file to save the image
+        file = File(file, "${UUID.randomUUID()}.png")
+
+        try {
+            // Get the file output stream
+            val stream: OutputStream = FileOutputStream(file)
+
+            // Compress bitmap
+            bitmap.compress(Bitmap.CompressFormat.PNG, 85, stream)
+
+            Log.e("imagen", file.absolutePath)
+            // Flush the stream
+            stream.flush()
+
+            // Close stream
+            stream.close()
+        } catch (e: IOException){ // Catch the exception
+            e.printStackTrace()
+        }
+
+        // Return the saved image uri
+        return Uri.parse(file.absolutePath)
+    }
+    private fun insertarMateria(idUsuario: Int) {
+
+
+
+
+
+        val uri: Uri = saveImageToInternalStorage(ivMateriaLogo.id)
         val baseDatos = BaseDatos(context!!).writableDatabase
         var valores: ContentValues = ContentValues()
         valores.put("nombre", etMateriaNombre.text.toString())
         valores.put("descripcion", etMateriaDescripcion.text.toString())
-        valores.put("logo", logo.toByteArray())
+        valores.put("logo", uri.toString())
         valores.put("idUsuario", idUsuario)
         baseDatos.insert("materias", null, valores)
     }

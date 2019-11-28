@@ -74,8 +74,12 @@ class InicioSesion : Fragment() {
                 fila.getString(fila.getColumnIndex("usuario")),
                 fila.getString(fila.getColumnIndex("clave"))
             )
+            fila.close()
+            baseDatos.close()
             return usuario
         } else {
+            fila.close()
+            baseDatos.close()
             return null
         }
     }

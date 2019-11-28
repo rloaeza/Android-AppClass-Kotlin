@@ -66,6 +66,9 @@
         <action
             android:id="@+id/action_materia_to_materiaListaAsistencia"
             app:destination="@id/materiaListaAsistencia" />
+        <argument
+            android:name="materia"
+            app:argType="com.mas_aplicaciones.appclass.modelo.Materia" />
     </fragment>
     <fragment
         android:id="@+id/registroAlumno"

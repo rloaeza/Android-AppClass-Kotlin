@@ -16,7 +16,7 @@ import com.mas_aplicaciones.appclass.modelo.Usuario
 class BaseDatos(context: Context) : SQLiteOpenHelper(context, dbName, null, dbVersion) {
 
     companion object {
-        const val dbVersion = 2
+        const val dbVersion = 3
         const val dbName = "appclass.db"
 
         var usuarioAppClass: Usuario? = null
@@ -35,7 +35,7 @@ class BaseDatos(context: Context) : SQLiteOpenHelper(context, dbName, null, dbVe
                 "nombre TEXT," +
                 "descripcion TEXT," +
                 "idUsuario INTEGER," +
-                "logo BLOB" +
+                "logo TEXT" +
                 ")"
 
 
