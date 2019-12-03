@@ -44,7 +44,11 @@
         tools:layout="@layout/fragment_listado_materias" >
         <action
             android:id="@+id/action_listadoMaterias_to_materia"
-            app:destination="@id/materia" />
+            app:destination="@id/materia"
+            app:enterAnim="@anim/enter_from_right"
+            app:exitAnim="@anim/exit_to_left"
+            app:popEnterAnim="@anim/enter_from_left"
+            app:popExitAnim="@anim/exit_to_right" />
         <argument android:name="usuario"
             app:argType="com.mas_aplicaciones.appclass.modelo.Usuario" />
         <action
