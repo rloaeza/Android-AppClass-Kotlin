@@ -30,4 +30,10 @@
     <string name="imagen_camara">Desde cámara</string>
     <string name="imagen_galeria">Desde galería</string>
     <string name="registro_exitoso">Registro exitoso</string>
+    <string name="ultimas_asistencia">Ultimas asistencias</string>
+    <string name="detalles">Detalles</string>
+    <string name="configuracion">Configuracion</string>
+    <string name="horarios">Horarios</string>
+    <string name="reportes">Reportes</string>
+    <string name="alumnos">Alumnos</string>
 </resources>

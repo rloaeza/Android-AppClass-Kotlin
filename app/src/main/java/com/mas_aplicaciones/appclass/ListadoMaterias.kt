@@ -28,6 +28,7 @@ class ListadoMaterias : Fragment() {
 
     val listaMaterias = arrayListOf<Materia>()
     lateinit var usuario: Usuario
+    var salir: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,17 +52,12 @@ class ListadoMaterias : Fragment() {
 
         cargarMaterias()
 
-
-
-        bSalir.setOnClickListener {
-            Navigation.findNavController(it).popBackStack()
-        }
-
-        bAgregarMateria.setOnClickListener {
+        fabAgregar.setOnClickListener {
             var bundle = bundleOf("usuario" to usuario)
             Navigation.findNavController(it).navigate(R.id.action_listadoMaterias_to_registroMateria, bundle)
         }
     }
+
 
     private fun cargarMaterias() {
         listaMaterias.clear()
