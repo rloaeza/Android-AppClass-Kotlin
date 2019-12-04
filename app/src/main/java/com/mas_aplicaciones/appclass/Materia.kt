@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.BarData
@@ -15,6 +16,7 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.mas_aplicaciones.appclass.modelo.Materia
 import kotlinx.android.synthetic.main.fragment_materia.*
+import kotlin.random.Random
 
 
 //
@@ -37,10 +39,14 @@ class Materia : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val materia: Materia = arguments?.get("materia") as Materia
-        tvNombre.setText(materia.nombre)
+        tvMateria.setText(materia.nombre)
         //ivLogo.setImageBitmap(BitmapFactory.decodeByteArray(materia.logo,0, materia.logo.size))
         ivLogo.setImageURI(materia.logo)
         tvDescripcion.setText(materia.descripcion)
+
+        bAlumnos.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_materia_to_materiaAlumnos)
+        }
 
 
         var barDataSet: BarDataSet = BarDataSet(getData(), "Asistencias")
@@ -68,18 +74,9 @@ class Materia : Fragment() {
 
     private fun getData(): ArrayList<BarEntry>? {
         val entries: ArrayList<BarEntry> = ArrayList()
-        entries.add(BarEntry(0f, 30f))
-        entries.add(BarEntry(1f, 27f))
-        entries.add(BarEntry(2f, 30f))
-        entries.add(BarEntry(3f, 30f))
-        entries.add(BarEntry(4f, 27f))
-        entries.add(BarEntry(5f, 28f))
-        entries.add(BarEntry(6f, 29f))
-        entries.add(BarEntry(7f, 30f))
-        entries.add(BarEntry(8f, 30f))
-        entries.add(BarEntry(9f, 25f))
-        entries.add(BarEntry(10f, 30f))
-        entries.add(BarEntry(11f, 30f))
+        for (x in 0..11) {
+            entries.add(BarEntry(x.toFloat(), 25+5*Random.nextFloat()))
+        }
         return entries
     }
 }

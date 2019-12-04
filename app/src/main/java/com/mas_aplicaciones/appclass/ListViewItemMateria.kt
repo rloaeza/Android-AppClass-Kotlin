@@ -1,7 +1,6 @@
 package com.mas_aplicaciones.appclass
 
 import android.content.Context
-import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +27,7 @@ class ListViewItemMateria(var context: Context, var lista: ArrayList<Materia>): 
         }
         val materia: Materia = getItem(position) as Materia
 
-        val tvNombre = view!!.findViewById<TextView>(R.id.tvNombre)
+        val tvNombre = view!!.findViewById<TextView>(R.id.tvMateria)
         tvNombre.setText(materia.nombre)
         val tvDescripcion = view!!.findViewById<TextView>(R.id.tvDescripcion)
         tvDescripcion.setText(materia.descripcion)

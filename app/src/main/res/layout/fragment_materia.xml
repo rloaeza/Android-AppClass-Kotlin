@@ -15,17 +15,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".2" />
+            app:layout_constraintGuide_percent=".3" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline18"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".3" />
+            app:layout_constraintGuide_percent=".4" />
 
         <TextView
-            android:id="@+id/tvNombre"
+            android:id="@+id/tvMateria"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -42,14 +42,14 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
             android:src="@drawable/materia_logo"
             app:layout_constraintBottom_toTopOf="@+id/guideline17"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/guideline13" />
 
         <TextView
             android:id="@+id/tvDescripcion"
@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".4" />
+            app:layout_constraintGuide_percent=".5" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton"
@@ -88,7 +88,7 @@
             app:layout_constraintGuide_percent=".45" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/bAlumnos"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -101,7 +101,7 @@
             app:layout_constraintTop_toTopOf="@+id/guideline19" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/bReportes"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -124,7 +124,24 @@
             app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button4" />
+            app:layout_constraintTop_toBottomOf="@+id/bAlumnos" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".1" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/appclass"
+            app:layout_constraintBottom_toTopOf="@+id/guideline13"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
